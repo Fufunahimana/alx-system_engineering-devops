@@ -1,0 +1,27 @@
+ure you are in alx-system_engineering-devops
+
+If you are not type cd alx-system_engineering-devops
+
+cd 0x00-shell_basics             Enter
+
+touch 11-lists                            Enter
+
+vi 11-lists                                   Enter
+
+(press i for insert mode then type the two lines below)
+
+#!/bin/bash
+
+ls -la . .. /boot
+
+After click ESC and type :wq           Enter
+
+chmod u+x 11-lists                          Enter
+
+cd ..                                                   Enter
+
+git add .
+
+git commit -m "(please put your own message)
+
+git push:
