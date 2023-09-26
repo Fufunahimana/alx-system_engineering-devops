@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-#installs nginx and redirects to video and custom 404
-sudo apt-get -y update
-sudo apt-get -y install nginx
-file1=/usr/share/nginx/html/index.html
-file=/etc/nginx/sites-available/default
-sudo bash -c "echo 'Holberton School ftw!' > $file1"
-service nginx start
-phrase="location /redirect_me {\nreturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}\n"
-sudo sed -i "30i $phrase" $file
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
-phrase2="error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /usr/share/nginx/html;\ninternal;\n}\n"
-sudo sed -i "30i $phrase2" $file
+# Installing Nginx on Server and 404 page
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt-get install -y nginx
+sudo chown -R "$USER":"$USER" /var/www/
+sudo chown -R "$USER":"$USER" /etc/nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+line="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+sudo sed -i "27i $line" /etc/nginx/sites-available/default
 sudo service nginx restart
+sudo service nginx reload
