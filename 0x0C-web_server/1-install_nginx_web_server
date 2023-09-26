@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Install nginx on web server; Nginx should be listening on port 80
 # Querying Nginx at its root (/) with a GET request (requesting a page)
-#    curl http://54.82.222.36/   --> returns string "Hello World!"
-#   curl http://54.82.222.36/   --> returns header info
+# curl http://54.210.196.235/   --> returns string "Hello World!"
+# curl http://54.210.196.235/   --> returns header info
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
