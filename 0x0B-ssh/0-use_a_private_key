@@ -3,7 +3,7 @@
 # Server details
 server_ip="54.210.196.235"
 user="ubuntu"
-private_key="~/.ssh/school"
+private_key="~/.ssh/id_rsa"
 
 # SSH connection using single-character flags
 ssh -i "$private_key" "$user@$server_ip"
