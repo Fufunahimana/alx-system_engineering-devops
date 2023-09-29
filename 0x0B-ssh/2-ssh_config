@@ -20,10 +20,11 @@ Host *
 #   ForwardX11 no
 #   ForwardX11Trusted yes
 #   RhostsRSAAuthentication no
-    RSAAuthentication yes
-    PasswordAuthentication yes
+#   PubkeyAuthentication yes
+#   RSAAuthentication yes
+    PasswordAuthentication no
     HostbasedAuthentication yes
-#   GSSAPIAuthentication no
+    GSSAPIAuthentication yes
 #   GSSAPIDelegateCredentials no
 #   GSSAPIKeyExchange no
 #   GSSAPITrustDNS no

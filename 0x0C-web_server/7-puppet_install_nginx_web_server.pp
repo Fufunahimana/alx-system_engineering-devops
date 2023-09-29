@@ -1,34 +1,6 @@
-# redirect me and nginx
-exec {'apt-get-update':
-  command => '/usr/bin/apt-get update'
-}
+# Puppet Manifest to Install and Configure an Nginx Server
 
-package {'apache2.2-common':
-  ensure  => 'absent',
-  require => Exec['apt-get-update']
-}
-
-package { 'nginx':
-  ensure  => 'installed',
-  require => Package['apache2.2-common']
-}
-
-service {'nginx':
-  ensure  =>  'running',
-  require => file_line['perform a redirection'],
-}
-
-file { '/var/www/html/index.nginx-debian.html':
-  ensure  => 'present',
-  content => 'Holberton School',
-  require =>  Package['nginx']
-}
-
-file_line { 'perform a redirection':
-  ensure  => 'present',
-  path    => '/etc/nginx/sites-enabled/default',
-  line    => 'rewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  after   => 'root /var/www/html;',
-  require => Package['nginx'],
-  notify  => Service['nginx'],
+exec {'install':
+  provider => shell,
+  command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx ; echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html ; sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Tolulope05 permanent;/" /etc/nginx/sites-available/default ; sudo service nginx start',
 }
