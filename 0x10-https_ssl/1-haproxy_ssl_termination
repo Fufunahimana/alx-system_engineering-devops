@@ -18,7 +18,7 @@ global
         ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
         ssl-dh-param-file /etc/haproxy/dhparams.pem
 
-		defaults
+                defaults
         log     global
         mode    http
         option  httplog
@@ -36,11 +36,14 @@ global
 
 backend http_back
    balance roundrobin
-   server 240202-web-01 35.153.16.232:80 check
-   server 240202-web-02 100.26.57.232:80 check
+   server 277828-web-01 18.235.233.64:80 check
+   server 277828-web-02 35.174.204.26:80 check
 
 frontend http_front
         bind *:80
-        bind *:443 ssl crt /etc/haproxy/certs/www.realkollihguruh.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.funfulgence.tech.pem
         redirect scheme https code 301 if !{ ssl_fc }
         default_backend http_back
+~                                                                                                                                                                                                                                                                                                                                                  
+~                                                                                                                                                                                                                                                                                                                                                  
+~                                            
